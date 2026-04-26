@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Anime Center</title>
+
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #000000;
+  font-family: Arial, sans-serif;
+}
+
+/* 💡 Luces laterales */
+body::before, body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  width: 200px;
+  height: 100%;
+  z-index: 0;
+  filter: blur(120px);
+}
+
+body::before {
+  left: -80px;
+  background: rgba(0, 255, 255, 0.8);
+}
+
+body::after {
+  right: -80px;
+  background: rgba(0, 255, 255, 0.8);
+}
+
+/* 🧠 Título negro con glow */
+.title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  font-size: 1.9rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  
+  text-align: center;
+  z-index: 2;
+
+  color: #000000;
+
+  text-shadow:
+    0 0 10px rgba(0,255,255,1),
+    0 0 25px rgba(0,150,255,0.8);
+
+  animation: glowPulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes glowPulse {
+  from {
+    text-shadow:
+      0 0 6px rgba(0,255,255,0.7),
+      0 0 15px rgba(0,150,255,0.5);
+  }
+  to {
+    text-shadow:
+      0 0 14px rgba(0,255,255,1),
+      0 0 30px rgba(0,150,255,0.9);
+  }
+}
+
+/* 🧊 Cubos */
+.cube {
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  background: linear-gradient(145deg, #00ffff, #0044ff);
+  box-shadow: 0 0 25px #00ffff;
+  animation: moveCube linear infinite;
+  border-radius: 6px;
+}
+
+/* ✨ Rastro */
+.cube::after {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 100%;
+  left: -100%;
+  background: linear-gradient(to right, rgba(0,255,255,0.4), transparent);
+  filter: blur(10px);
+}
+
+/* 🚀 Movimiento */
+@keyframes moveCube {
+  from {
+    transform: translateX(-120px);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(110vw);
+    opacity: 0;
+  }
+}
+
+/* 📍 Posiciones */
+.cube:nth-of-type(1) { top: 20%; animation-duration: 6s; }
+.cube:nth-of-type(2) { top: 40%; animation-duration: 5.5s; }
+.cube:nth-of-type(3) { top: 60%; animation-duration: 6.5s; }
+.cube:nth-of-type(4) { top: 80%; animation-duration: 6s; }
+
+</style>
+</head>
+
+<body>
+
+<h1 class="title">Anime Center | Cloudflare & Domain</h1>
+
+<div class="cube"></div>
+<div class="cube"></div>
+<div class="cube"></div>
+<div class="cube"></div>
+
+</body>
+</html>
